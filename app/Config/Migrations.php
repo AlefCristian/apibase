@@ -47,4 +47,16 @@ class Migrations extends BaseConfig
      * - Y_m_d_His_
      */
     public string $timestampFormat = 'Y-m-d-His_';
+
+     /**
+     * Paths to look for migrations
+     * 
+     * Default is APPPATH . 'Database/Migrations'
+     * Aqui você pode adicionar paths extras para seus módulos
+     */
+    public array $paths = [
+        APPPATH . 'Database/Migrations',               // migrations do app principal
+        APPPATH . 'Modules/Frota/Database/Migrations'  // migrations do módulo Frota
+    ];
+
 }

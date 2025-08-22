@@ -10,7 +10,6 @@ use Firebase\JWT\Key;
 class Auth extends ResourceController
 {
     protected $format = 'json';
-    private $key = 'chave_secreta_segura'; // 🔒 Altere para algo mais seguro
 
     public function register()
     {
@@ -37,26 +36,28 @@ class Auth extends ResourceController
     }
 
     public function login()
-    {
-        $model = new UserModel();
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
+{
+    $model = new UserModel();
 
-        $user = $model->where('email', $email)->first();
+    $email = $this->request->getVar('email');
+    $password = $this->request->getVar('password');
 
-        if (!$user || !password_verify($password, $user['password'])) {
-            return $this->failUnauthorized('Email ou senha inválidos.');
-        }
+    $user = $model->where('email', $email)->first();
 
-        $payload = [
-            'sub' => $user['id'],
-            'email' => $user['email'],
-            'iat' => time(),
-            'exp' => time() + 3600 // 1 hora
-        ];
-
-        $token = JWT::encode($payload, $this->key, 'HS256');
-
-        return $this->respond(['token' => $token]);
+    if (!$user || !password_verify($password, $user['password'])) {
+        return $this->failUnauthorized('Email ou senha inválidos.');
     }
+
+    $payload = [
+        'sub'   => $user['id'],
+        'email' => $user['email'],
+        'iat'   => time(),
+        'exp'   => time() + 3600 // 1 hora
+    ];
+
+    $key = getenv('JWT_SECRET');
+    $token = JWT::encode($payload, $key, 'HS256');
+
+    return $this->respond(['token' => $token]);
+}
 }
