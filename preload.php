@@ -32,8 +32,7 @@ require __DIR__ . '/app/Config/Paths.php';
 // Path to the front controller
 define('FCPATH', __DIR__ . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR);
 
-class preload
-{
+class preload {
     /**
      * @var array Paths to preload.
      */
@@ -66,13 +65,11 @@ class preload
         ],
     ];
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->loadAutoloader();
     }
 
-    private function loadAutoloader(): void
-    {
+    private function loadAutoloader(): void {
         $paths = new Paths();
         require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'Boot.php';
 
@@ -82,12 +79,11 @@ class preload
     /**
      * Load PHP files.
      */
-    public function load(): void
-    {
+    public function load(): void {
         foreach ($this->paths as $path) {
             $directory = new RecursiveDirectoryIterator($path['include']);
-            $fullTree  = new RecursiveIteratorIterator($directory);
-            $phpFiles  = new RegexIterator(
+            $fullTree = new RecursiveIteratorIterator($directory);
+            $phpFiles = new RegexIterator(
                 $fullTree,
                 '/.+((?<!Test)+\.php$)/i',
                 RecursiveRegexIterator::GET_MATCH,

@@ -1,0 +1,27 @@
+meta {
+  name: Profile
+  type: http
+  seq: 5
+}
+
+get {
+  url: http:\\localhost:8080\api\user
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiZW1haWwiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTc1NjA2NTE5MSwiZXhwIjoxNzU2MDY4NzkxfQ.t5NYUx6yUZNesUpxyrV0DtbkTJoW8rQ3tLxpZXRSkmw
+}
+
+body:json {
+  {
+    "username": "alef.santos",
+    "email": "example@email.com",
+    "password": "123456"
+  }
+}
+
+settings {
+  encodeUrl: true
+}

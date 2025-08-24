@@ -1,0 +1,19 @@
+meta {
+  name: Frota Teste
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:8080/api/frota/teste
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiZW1haWwiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTc1NjA2NTE5MSwiZXhwIjoxNzU2MDY4NzkxfQ.t5NYUx6yUZNesUpxyrV0DtbkTJoW8rQ3tLxpZXRSkmw
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,19 @@
+meta {
+  name: Frota listar
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8080/api/frota/lista
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiZW1haWwiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTc1NjA2Mzk0NywiZXhwIjoxNzU2MDY3NTQ3fQ.ilXKTFsXwHIJEQQj05ngCMMnH1DuEUTXPiYiK6Izv8s
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "apibase",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

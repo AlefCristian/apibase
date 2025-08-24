@@ -10,8 +10,7 @@ use CodeIgniter\Modules\Modules as BaseModules;
  * NOTE: This class is required prior to Autoloader instantiation,
  *       and does not extend BaseConfig.
  */
-class Modules extends BaseModules
-{
+class Modules extends BaseModules {
     /**
      * --------------------------------------------------------------------------
      * Enable Auto-Discovery?

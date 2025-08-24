@@ -4,8 +4,7 @@ namespace Config;
 
 use CodeIgniter\Config\BaseConfig;
 
-class Security extends BaseConfig
-{
+class Security extends BaseConfig {
     /**
      * --------------------------------------------------------------------------
      * CSRF Protection Method

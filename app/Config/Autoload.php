@@ -18,8 +18,7 @@ use CodeIgniter\Config\AutoloadConfig;
  * NOTE: This class is required prior to Autoloader instantiation,
  *       and does not extend BaseConfig.
  */
-class Autoload extends AutoloadConfig
-{
+class Autoload extends AutoloadConfig {
     /**
      * -------------------------------------------------------------------
      * Namespaces
@@ -39,8 +38,7 @@ class Autoload extends AutoloadConfig
      */
     public $psr4 = [
         APP_NAMESPACE => APPPATH,
-        'Modules' => APPPATH . 'Modules',
-        'App\\Modules' => APPPATH . 'Modules',
+        'Frota' => APPPATH . 'Modules/Frota',      // cobre App\Modules\
     ];
 
     /**

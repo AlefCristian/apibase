@@ -8,14 +8,12 @@ use Tests\Support\Models\ExampleModel;
 /**
  * @internal
  */
-final class ExampleDatabaseTest extends CIUnitTestCase
-{
+final class ExampleDatabaseTest extends CIUnitTestCase {
     use DatabaseTestTrait;
 
     protected $seed = ExampleSeeder::class;
 
-    public function testModelFindAll(): void
-    {
+    public function testModelFindAll(): void {
         $model = new ExampleModel();
 
         // Get every row created by ExampleSeeder
@@ -25,8 +23,7 @@ final class ExampleDatabaseTest extends CIUnitTestCase
         $this->assertCount(3, $objects);
     }
 
-    public function testSoftDeleteLeavesRow(): void
-    {
+    public function testSoftDeleteLeavesRow(): void {
         $model = new ExampleModel();
         $this->setPrivateProperty($model, 'useSoftDeletes', true);
         $this->setPrivateProperty($model, 'tempUseSoftDeletes', true);

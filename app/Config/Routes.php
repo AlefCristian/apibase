@@ -16,5 +16,3 @@ $routes->get('api/user', 'User::profile');
 if (file_exists(APPPATH . 'Modules/Frota/Config/Routes.php')) {
     require APPPATH . 'Modules/Frota/Config/Routes.php';
 }
-
-

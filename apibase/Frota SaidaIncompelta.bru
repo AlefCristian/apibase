@@ -1,0 +1,27 @@
+meta {
+  name: Frota SaidaIncompelta
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://localhost:8080/api/frota/saida
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiZW1haWwiOiJleGFtcGxlQGVtYWlsLmNvbSIsImlhdCI6MTc1NjA2Mzk0NywiZXhwIjoxNzU2MDY3NTQ3fQ.ilXKTFsXwHIJEQQj05ngCMMnH1DuEUTXPiYiK6Izv8s
+}
+
+body:json {
+  {
+      "nome_motorista": "Bruno",
+      "horario_saida": "2025-08-24 15:30:00",
+      "km_saida": 12000
+  }
+}
+
+settings {
+  encodeUrl: true
+}

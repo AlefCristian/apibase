@@ -11,9 +11,7 @@ use Config\App;
  * loading external values. Used to read actual local values from
  * a config file.
  */
-class ConfigReader extends App
-{
-    public function __construct()
-    {
+class ConfigReader extends App {
+    public function __construct() {
     }
 }

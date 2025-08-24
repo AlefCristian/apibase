@@ -1,18 +1,18 @@
 <?php
-namespace Modules\Frota\Models;
+
+namespace Frota\Models;
 
 use CodeIgniter\Model;
 
-class FrotaModel extends Model
-{
-    protected $table            = 'frota';
-    protected $primaryKey       = 'id';
+class FrotaModel extends Model {
+    protected $table = 'frota';
+    protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
 
-    protected $returnType       = 'array';
-    protected $useTimestamps    = true;
+    protected $returnType = 'array';
+    protected $useTimestamps = true;
 
-    protected $allowedFields    = [
+    protected $allowedFields = [
         'nome_motorista',
         'horario_saida',
         'km_saida',
