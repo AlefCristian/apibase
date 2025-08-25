@@ -33,7 +33,7 @@ writable/           # Arquivos de cache, logs, etc.
 
 1. Clone o repositório:
    ```bash
-   git clone git@github.com:SEU_USUARIO/apibase.git
+   git clone git@github.com:AlefCristian/apibase.git
    cd apibase
    ```
 
