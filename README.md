@@ -1,68 +1,95 @@
-# CodeIgniter 4 Application Starter
+# API Base
 
-## What is CodeIgniter?
+Este projeto é uma **API base** desenvolvida em **CodeIgniter 4**, estruturada para servir como ponto inicial para criação de sistemas modulares.  
+O objetivo é fornecer uma arquitetura limpa, organizada e pronta para expandir com novos módulos de acordo com a necessidade.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 🚀 Tecnologias Utilizadas
+- **PHP 8+**
+- **CodeIgniter 4**
+- **MySQL/MariaDB** (ou outro banco relacional compatível)
+- **Composer** para gerenciamento de dependências
+- **Docker** (opcional, para ambiente de desenvolvimento)
+- **AdminLTE** (para o front-end administrativo, quando aplicável)
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+---
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## 📂 Estrutura do Projeto
+```
+app/
+ ├── Config/        # Configurações principais
+ ├── Controllers/   # Controladores da API
+ ├── Models/        # Modelos (camada de acesso ao banco)
+ ├── Views/         # Views (quando necessário)
+ ├── Modules/       # Módulos independentes do sistema
+public/             # Pasta pública (index.php)
+writable/           # Arquivos de cache, logs, etc.
+```
 
-## Installation & updates
+---
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+## ⚙️ Configuração do Ambiente
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+1. Clone o repositório:
+   ```bash
+   git clone git@github.com:SEU_USUARIO/apibase.git
+   cd apibase
+   ```
 
-## Setup
+2. Instale as dependências do Composer:
+   ```bash
+   composer install
+   ```
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+3. Copie o arquivo de configuração `.env.example` para `.env`:
+   ```bash
+   cp env.example .env
+   ```
 
-## Important Change with index.php
+4. Configure o banco de dados no arquivo `.env`:
+   ```
+   database.default.hostname = localhost
+   database.default.database = apibase
+   database.default.username = root
+   database.default.password = 
+   database.default.DBDriver = MySQLi
+   ```
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+5. Rode as migrations (se houver):
+   ```bash
+   php spark migrate
+   ```
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+6. Inicie o servidor local:
+   ```bash
+   php spark serve
+   ```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+---
 
-## Repository Management
+## 📌 Funcionalidades Principais
+- Estrutura modular para expansão.
+- Controle de autenticação via filtro.
+- Suporte a APIs RESTful.
+- Fácil integração com frontend.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+---
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## 🔑 Autenticação
+A API pode utilizar **JWT** ou autenticação por sessão.  
+O fluxo de login retorna um **token** que deve ser enviado em todas as requisições subsequentes:
 
-## Server Requirements
+```
+Authorization: Bearer {token}
+```
 
-PHP version 8.1 or higher is required, with the following extensions installed:
+---
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+## 🤝 Contribuindo
+Sinta-se à vontade para abrir **issues** e enviar **pull requests** com melhorias.
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
+---
 
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## 📄 Licença
+Este projeto está sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
