@@ -29,6 +29,10 @@ class FrotaController extends ResourceController {
 
         $id = $this->model->insert($frotaData);
 
+        if ($id === false || is_null($id)) {
+            return $this->failServerError('Erro ao salvar no banco de dados');
+        }       
+
         return $this->respondCreated([
             'message' => 'Registro de frota criado com sucesso.',
             'id' => $id,
@@ -69,7 +73,6 @@ class FrotaController extends ResourceController {
             return $this->failServerError('Erro interno: ' . $e->getMessage());
         }
     }
-
 
     public function teste() {
         return $this->respond(['message' => 'Teste realizado com sucesso!']);
