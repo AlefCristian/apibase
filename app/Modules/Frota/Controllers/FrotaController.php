@@ -4,6 +4,7 @@ namespace Frota\Controllers;
 
 use Frota\Models\FrotaModel;
 use CodeIgniter\RESTful\ResourceController;
+use \DateTime;
 
 class FrotaController extends ResourceController {
     protected $modelName = FrotaModel::class;
@@ -14,16 +15,28 @@ class FrotaController extends ResourceController {
         $data = $this->request->getJSON(true);
 
         // Campos obrigatórios mínimos
-        if (!isset($data['nome_motorista'], $data['horario_saida'], $data['km_saida'])) {
-            return $this->failValidationErrors('Campos obrigatórios: nome_motorista, horario_saida, km_saida');
+        if (!isset($data['nome_motorista'], $data['horario_saida'], $data['km_saida'], $data['horario_retorno'], $data['km_retorno'])) {
+            return $this->failValidationErrors('Registro incompleto');
+        }
+
+        $datahorasaida = $data['data_saida'] . ' ' . $data['horario_saida'];
+        $datahoraretorno = $data['data_saida'] . ' ' . $data['horario_retorno'];
+
+        // Cria um DateTime a partir do formato brasileiro
+        $dateTimeSaida = DateTime::createFromFormat('d-m-Y H:i', $datahorasaida);
+        $dateTimeRetorno = DateTime::createFromFormat('d-m-Y H:i', $datahoraretorno);
+
+        // Verifica se o parse foi bem-sucedido
+        if (!$dateTimeSaida || !$dateTimeRetorno) {
+            return $this->failValidationErrors('Data ou hora inválida.' . ' ' . $data['horario_saida']);
         }
 
         // Os campos de retorno são opcionais
         $frotaData = [
             'nome_motorista' => $data['nome_motorista'],
-            'horario_saida' => $data['horario_saida'],
+            'horario_saida' =>  $dateTimeSaida->format('Y-m-d H:i:s'),
             'km_saida' => $data['km_saida'],
-            'horario_retorno' => $data['horario_retorno'] ?? null,
+            'horario_retorno' =>  $dateTimeRetorno->format('Y-m-d H:i:s'),
             'km_retorno' => $data['km_retorno'] ?? null,
         ];
 
