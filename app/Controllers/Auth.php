@@ -35,18 +35,18 @@ class Auth extends ResourceController {
     public function login() {
         $model = new UserModel();
 
-        $email = $this->request->getVar('email');
+        $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
 
-        $user = $model->where('email', $email)->first();
+        $user = $model->where('username', $username)->first();
 
         if (!$user || !password_verify($password, $user['password'])) {
-            return $this->failUnauthorized('Email ou senha inválidos.');
+            return $this->failUnauthorized('Usuário ou senha inválidos.');
         }
 
         $payload = [
             'sub' => $user['id'],
-            'email' => $user['email'],
+            'username' => $user['username'],
             'iat' => time(),
             'exp' => time() + 3600 // 1 hora
         ];

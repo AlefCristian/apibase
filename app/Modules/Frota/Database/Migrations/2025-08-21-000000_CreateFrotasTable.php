@@ -9,6 +9,7 @@ class CreateFrotasTable extends Migration {
         $this->forge->addField([
             'id' => ['type' => 'INT', 'auto_increment' => true],
             'nome_motorista' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'local_destino' => ['type' => 'VARCHAR', 'constraint' => 100],
             'horario_saida' => ['type' => 'DATETIME'],
             'km_saida' => ['type' => 'INT'],
             'horario_retorno' => ['type' => 'DATETIME', 'null' => true],

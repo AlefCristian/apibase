@@ -15,7 +15,7 @@ class FrotaController extends ResourceController {
         $data = $this->request->getJSON(true);
 
         // Campos obrigatórios mínimos
-        if (!isset($data['nome_motorista'], $data['horario_saida'], $data['km_saida'], $data['horario_retorno'], $data['km_retorno'])) {
+        if (!isset($data['nome_motorista'], $data['local_destino'], $data['horario_saida'], $data['km_saida'], $data['horario_retorno'], $data['km_retorno'])) {
             return $this->failValidationErrors('Registro incompleto');
         }
 
@@ -34,6 +34,7 @@ class FrotaController extends ResourceController {
         // Os campos de retorno são opcionais
         $frotaData = [
             'nome_motorista' => $data['nome_motorista'],
+            'local_destino' =>$data['destino'],
             'horario_saida' =>  $dateTimeSaida->format('Y-m-d H:i:s'),
             'km_saida' => $data['km_saida'],
             'horario_retorno' =>  $dateTimeRetorno->format('Y-m-d H:i:s'),
