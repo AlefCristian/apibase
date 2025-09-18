@@ -14,7 +14,7 @@ class FrotaModel extends Model {
 
     protected $allowedFields = [
         'nome_motorista',
-        'local_destino'
+        'local_destino',
         'horario_saida',
         'km_saida',
         'horario_retorno',
