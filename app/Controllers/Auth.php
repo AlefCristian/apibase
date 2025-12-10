@@ -33,19 +33,27 @@ class Auth extends ResourceController {
     }
 
     public function login() {
+        #var_dump(getenv('JWT_SECRET')); die;
+
         $model = new UserModel();
 
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
+        $data = $this->request->getJSON();
+        $username = $data->username ?? null;
+        $email = $data->email ?? null;
+        $password = $data->password ?? null;
+        // $email = $this->request->getVar('email');
+        // $username = $this->request->getVar('username');
+        // $password = $this->request->getVar('password');
 
-        $user = $model->where('email', $email)->first();
+        $user = $model->where('username', $username)->first();
 
         if (!$user || !password_verify($password, $user['password'])) {
-            return $this->failUnauthorized('Email ou senha inválidos.');
+            return $this->failUnauthorized('Usuario ou senha inválidos.');
         }
 
         $payload = [
             'sub' => $user['id'],
+            'username' => $user['username'],
             'email' => $user['email'],
             'iat' => time(),
             'exp' => time() + 3600 // 1 hora

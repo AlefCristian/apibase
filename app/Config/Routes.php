@@ -7,11 +7,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 
-// Api Auth
+//Api Auth
 $routes->post('api/register', 'Auth::register');
 $routes->post('api/login', 'Auth::login');
 $routes->get('api/user', 'User::profile');
-
 
 if (file_exists(APPPATH . 'Modules/Frota/Config/Routes.php')) {
     require APPPATH . 'Modules/Frota/Config/Routes.php';

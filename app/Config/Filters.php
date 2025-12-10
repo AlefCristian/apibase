@@ -72,6 +72,7 @@ class Filters extends BaseFilters {
      */
     public array $globals = [
         'before' => [
+            'cors',
             'authfilter' => ['except' => [
             'api/login',
             'api/register',
@@ -83,6 +84,7 @@ class Filters extends BaseFilters {
             // 'invalidchars',
         ],
         'after' => [
+            'cors',
             // 'honeypot',
             // 'secureheaders',
         ],
