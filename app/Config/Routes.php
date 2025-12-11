@@ -8,6 +8,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 //Api Auth
+
+$routes->options('api/(:any)', static function () {}); //Pra funcionar o cors
+
 $routes->post('api/register', 'Auth::register');
 $routes->post('api/login', 'Auth::login');
 $routes->get('api/user', 'User::profile');

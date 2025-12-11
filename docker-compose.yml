@@ -2,6 +2,7 @@ services:
   app:
     build: .
     container_name: codeigniter-app
+    user: "1001:1001"
     ports:
       - "8080:80"  # Acesse o app em http://localhost:8080
     volumes:
@@ -12,6 +13,7 @@ services:
 
   mysql:
     image: mysql:8.0
+    user: "1001:1001"
     container_name: mysql-codeigniter
     restart: unless-stopped
     ports:
@@ -26,6 +28,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
+    user: "1001:1001"
     container_name: phpmyadmin
     restart: unless-stopped
     ports:
