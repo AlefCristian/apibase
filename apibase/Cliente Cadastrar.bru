@@ -1,0 +1,26 @@
+meta {
+  name: Cliente Cadastrar
+  type: http
+  seq: 8
+}
+
+post {
+  url: http://localhost:8080/api/clientes
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nome": "João da Silva",
+    "email": "joao@email.com",
+    "telefone": "(11) 99999-8888",
+    "cpf": "123.456.789-00"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

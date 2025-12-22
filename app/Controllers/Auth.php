@@ -38,6 +38,12 @@ class Auth extends ResourceController {
         $model = new UserModel();
 
         $data = $this->request->getJSON();
+
+        if (!$data || (!isset($data->username) && !isset($data->email)) || !isset($data->password)) {
+            return $this->failValidationErrors('Dados inválidos.');
+        }
+
+
         $username = $data->username ?? null;
         $email = $data->email ?? null;
         $password = $data->password ?? null;
